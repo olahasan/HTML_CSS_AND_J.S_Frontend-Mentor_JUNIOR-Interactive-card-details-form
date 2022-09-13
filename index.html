@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+
+  <link rel="stylesheet" href="css/main.css"/>
+  
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  
+  </div> -->
+  <div class="main" id="main">
+    <div class="container">
+      <div class="left">
+        <div class="top" id="top">
+          <div class="logo">
+            <img src="images/card-logo.svg" alt="pic"/>
+          </div>
+          <form action="" method="get">
+            <div class="one">
+              <input type="number" name="card_num" id="cn" placeholder="0000 0000 0000 0000" value="0000 0000 0000 0000"/>
+            </div>
+            <div class="two">
+              <input type="text" name="card_name" id="cna" placeholder="JANE APPLESEED"/>
+              <input type="text" name="card_year" id="cy" placeholder="00/00"/>
+            </div>
+          </form>
+        </div>
+        <div class="bottom">
+          <img src="images/bg-card-back.png" alt="">
+          <form class="form_bottom">
+            <input type="number" name="input_img" id="thelast" placeholder="000" value="000"/>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="right">
+        <form id="need" target="_blank">
+          <div class="person">
+            <label for="">Cardholder Name</label>
+            <input type="text" name="Cardholder" id="Cardholder" placeholder="e.g. Jane Appleseed"/>
+            <p id="personp" class="hidden">can not be blank</p>
+          </div>
+          <div class="number">
+            <label for="">Card Number</label>
+            <input type="number" name="Numbercard" id="Numbercard" placeholder="e.g. 1234 5678 9123 0000"/>
+            <p id="numberp" class="hidden">numbers only  should be fill</p>
+          </div>
+          <div class="date">
+            <div class="one">
+              <label for="">Exp. Date (MM/YY)</label>
+              <input type="month" name="month" id="month" placeholder="MM"/> 
+              <p id="onep" class="hidden">can not be blank</p>
+            </div>
+            <div class="two">
+              <label for="">CVC</label>
+              <input type="number" name="CVC" id="CVC" placeholder="e.g. 123"/>
+              <p id="twop" class="hidden">can not be blank</p>
+            </div>
+          </div>
+          <input type="submit" name="Confirm" id="Confirm" placeholder="Confirm" value="Confirm"/>
+        </form>
+        <div class="card hidden">
+          <div class="image">
+            <img src="images/icon-complete.svg" alt="pic"/>
+          </div>
+          <div class="text">
+            <h2>Thank you!</h2>
+            <p>We've added your card details</p>
+          </div>
+          <button>Continue</button>
+        </div>
+      </div>
+
+    </div>
+    
+  </div>  
+  <script src="main.js"></script>
+</body>
+</html>
