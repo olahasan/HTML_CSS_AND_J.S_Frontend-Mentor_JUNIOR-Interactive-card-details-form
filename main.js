@@ -1,93 +1,88 @@
-let Cardholder = document.getElementById("Cardholder");
-let cna = document.getElementById("cna");
-// console.log(Cardholder);
-// console.log(cna);
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("need");
+  const card = document.querySelector(".card");
+  const messages = {
+    personp: document.getElementById("personp"),
+    numberp: document.getElementById("numberp"),
+    onep: document.getElementById("onep"),
+    twop: document.getElementById("twop"),
+  };
 
-Cardholder.onkeyup = function(){
-    cna.value = this.value;
-    cna.style.color = "white";
-    personp.classList.add("hidden");
+  form.addEventListener("keyup", handleKeyUp);
+  form.addEventListener("submit", handleSubmit);
 
-}
+  function handleKeyUp(e) {
+    const target = e.target;
 
-let Numbercard = document.getElementById("Numbercard");
-let cn = document.getElementById("cn");
-// console.log(Numbercard);
-// console.log(cn);
+    if (target.matches("#Cardholder")) {
+      updateField("cna", target.value);
+      hideMessage("personp");
+    } else if (target.matches("#Numbercard")) {
+      updateField("cn", target.value);
+      hideMessage("numberp");
+    } else if (target.matches("#month")) {
+      updateField("cy", target.value);
+      hideMessage("onep");
+    } else if (target.matches("#CVC")) {
+      updateField("thelast", target.value);
+      hideMessage("twop");
+    }
+  }
 
-Numbercard.onkeyup = function(){
-    cn.value = this.value;
-    numberp.classList.add("hidden");
-}
-
-let month = document.getElementById("month");
-let cy = document.getElementById("cy");
-// console.log(month);
-// console.log(cy);
-
-month.onchange = function(){
+  document.getElementById("month").onchange = function () {
     cy.value = this.value;
     cy.style.color = "white";
     onep.classList.add("hidden");
-}
+  };
 
-let CVC = document.getElementById("CVC");
-// console.log(CVC);
+  function handleSubmit(e) {
+    e.preventDefault();
+    let valid = true;
 
-let thelast = document.getElementById("thelast");
-// console.log(thelast);
+    if (document.getElementById("Cardholder").value === "") {
+      valid = false;
+      showMessage("personp");
+    }
+    if (document.getElementById("Numbercard").value === "") {
+      valid = false;
+      showMessage("numberp");
+    }
+    if (document.getElementById("month").value === "") {
+      valid = false;
+      showMessage("onep");
+    }
+    if (document.getElementById("CVC").value === "") {
+      valid = false;
+      showMessage("twop");
+    }
 
-CVC.onkeyup = function(){
-    thelast.value = this.value;
-    twop.classList.add("hidden");
-}
+    if (valid) {
+      form.style.display = "none";
+      card.classList.remove("hidden");
+      card.addEventListener("click", handleCardClick);
+    }
+  }
 
+  function handleCardClick(e) {
+    if (e.target.tagName.toLowerCase() === "button") {
+      location.reload();
+    }
+  }
 
+  function updateField(fieldId, value) {
+    const field = document.getElementById(fieldId);
+    console.log(field);
+    if (field) {
+      field.value = value;
+      field.style.color = "white";
+    }
+  }
 
-let Confirm = document.getElementById("Confirm");
-// console.log(Confirm);
-let personp = document.getElementById("personp");
-// console.log(personp);
-let numberp = document.getElementById("numberp");
-// console.log(numberp);
-let onep = document.getElementById("onep");
-// console.log(onep);
-let twop = document.getElementById("twop");
-// console.log(twop);
+  function showMessage(messageId) {
+    messages[messageId].classList.remove("hidden");
+  }
 
-
-let main = document.getElementById("main");
-// console.log(main);
-let need = document.getElementById("need");
-// console.log(need);
-let card = document.querySelector(".card");
-// console.log(card);
-
-need.onsubmit = function(e){
-    if(Cardholder.value === ""){
-            e.preventDefault();
-            // console.log("true");
-            personp.classList.remove("hidden");
-           }
-    if(Numbercard.value === ""){
-                e.preventDefault();
-                // console.log("true");
-                numberp.classList.remove("hidden");
-               } 
-              
-    if(month.value === ""){
-                e.preventDefault();
-                // console.log("true");
-                onep.classList.remove("hidden");
-               } 
-            
-    if(CVC.value === ""){
-                e.preventDefault();
-                // console.log("true");
-                twop.classList.remove("hidden");
-               }else{
-            need.style.display = "none";
-            card.classList.remove("hidden");
-           }
-}
-
+  function hideMessage(messageId) {
+    messages[messageId].classList.add("hidden");
+  }
+});
